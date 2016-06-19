@@ -9,7 +9,8 @@ fi
 
 cd /home
 sudo git clone https://github.com/angular/quickstart $APPNAME
-sudo chmod 777 -R /home/$APPNAME
+sudo chown ec2-user -R /home/$APPNAME
+sudo chmod 775 -R /home/$APPNAME
 cd $APPNAME
 sudo rm -r .git
 curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
