@@ -1,0 +1,15 @@
+#!/bin/bash
+# Launch ng2 app
+
+if [ -z $1 ]; then
+	APPNAME="NewApp"
+else
+	APPNAME=$1
+fi
+
+cd /home/ec2-user
+sudo git clone https://github.com/angular/quickstart $APPNAME
+cd $APPNAME
+sudo rm -rf .git
+curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
+gitpush 'v0.0.1'

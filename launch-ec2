@@ -34,3 +34,4 @@ sudo chmod -R 777 /usr/local/var/log/couchdb
 sudo yum install mysql
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
 git config --global credential.helper store
+npm install yo generator-generator
