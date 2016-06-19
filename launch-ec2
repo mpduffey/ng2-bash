@@ -1,36 +1,37 @@
 #!/bin/bash
 # Launch ec-2 instance
 
-sudo su
 cd /home/ec2-user
 curl --silent --location https://rpm.nodesource.com/setup_5.x | bash -
-yum install -y gcc-c++ make
-yum install -y nodejs
-npm install npm -g
-yum install git
-yum install autoconf autoconf autoconf-archive automake ncurses-devel curl-devel erlang-asn1 erlang-erts erlang-eunit erlang-os_mon erlang-xmerl help2man js-devel libicu-devel libtool perl-Test-Harness gcc-c++
-wget http://www.erlang.org/download/otp_src_R14B01.tar.gz
-tar -xvf otp_src_R14B01.tar.gz
+sudo yum install -y gcc-c++ make
+sudo yum install -y nodejs
+sudo npm install npm -g
+sudo yum install git
+sudo yum install autoconf autoconf autoconf-archive automake ncurses-devel curl-devel erlang-asn1 erlang-erts erlang-eunit erlang-os_mon erlang-xmerl help2man js-devel libicu-devel libtool perl-Test-Harness gcc-c++
+sudo wget http://www.erlang.org/download/otp_src_R14B01.tar.gz
+sudo tar -xvf otp_src_R14B01.tar.gz
 cd otp_src_R14B01
-./configure
-make && make install
-yum install cvs zip gcc-c++ glib2-devel gtk2-devel fontconfig-devel libnotify-devel libIDL-devel alsa-lib-devel libXt-devel freetype-devel pkgconfig dbus-glib-devel curl-devel autoconf213 xorg-x11-proto-devel libX11-devel libXau-devel libXext-devel wireless-tools-devel glibc-static libstdc++-static yasm mesa-libGL-devel esound-libs esound-devel ccache mercurial
-curl -L -O http://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz
-tar xvf js185-1.0.0.tar.gz
+sudo ./configure
+sudo make && sudo make install
+sudo yum install cvs zip gcc-c++ glib2-devel gtk2-devel fontconfig-devel libnotify-devel libIDL-devel alsa-lib-devel libXt-devel freetype-devel pkgconfig dbus-glib-devel curl-devel autoconf213 xorg-x11-proto-devel libX11-devel libXau-devel libXext-devel wireless-tools-devel glibc-static libstdc++-static yasm mesa-libGL-devel esound-libs esound-devel ccache mercurial
+sudo curl -L -O http://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz
+sudo tar xvf js185-1.0.0.tar.gz
 cd js-1.8.5/js/src
 autoconf-2.13
-./configure
-make && make install
-wget http://mirror.tcpdiag.net/apache/couchdb/source/1.6.1/apache-couchdb-1.6.1.tar.gz
-tar -xvf apache-couchdb-1.6.1.tar.gz
+sudo ./configure
+sudo make && sudo make install
+sudo wget http://mirror.tcpdiag.net/apache/couchdb/source/1.6.1/apache-couchdb-1.6.1.tar.gz
+sudo tar -xvf apache-couchdb-1.6.1.tar.gz
 cd apache-couchdb-1.6.1
-./configure --with-erlang=/usr/local/lib/erlang/usr/include
-make && make install
-chmod 777 /lost+found
-chmod 777 /root
-chmod 777 /usr/local/etc/couchdb
-chmod 777 /usr/local/etc/couchdb/local.ini
-chmod 777 /usr/local/var/lib/couchdb
-chmod 777 /usr/local/var/run/couchdb
-yum install mysql
-iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
+sudo ./configure --with-erlang=/usr/local/lib/erlang/usr/include
+sudo make && sudo make install
+sudo chmod 777 /lost+found
+sudo chmod 777 /root
+sudo chmod 777 /usr/local/etc/couchdb
+sudo chmod 777 /usr/local/etc/couchdb/local.ini
+sudo chmod 777 /usr/local/var/lib/couchdb
+sudo chmod 777 /usr/local/var/run/couchdb
+sudo chmod -R 777 /usr/local/var/log/couchdb
+sudo yum install mysql
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
+git config --global credential.helper store

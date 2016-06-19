@@ -1,0 +1,6 @@
+#!/bin/bash
+# Launch ec-2 instance
+
+git add .
+git commit -m "$1"
+git push origin master
