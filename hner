@@ -1,9 +1,0 @@
-#!/bin/bash
-
-if [ -z $1 ]; then
-	REPONAME=${PWD##*/}
-else
-	REPONAME=$1
-fi
-
-echo $REPONAME
