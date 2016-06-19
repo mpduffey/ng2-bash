@@ -1,0 +1,16 @@
+#!/bin/bash
+# Modularize Angular 2 module
+
+if [ -z $1 ]; then
+	REPONAME=${PWD##*/}
+else
+	REPONAME=$1
+fi
+
+curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$REPONAME'"}'
+npm init -y
+git init
+git remote add origin https://github.com/mpduffey/$REPONAME
+git add .
+git commit -m 'v0.0.0'
+git push origin master
