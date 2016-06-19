@@ -9,9 +9,11 @@ fi
 
 cd /home
 sudo git clone https://github.com/angular/quickstart $APPNAME
+sudo chmod 777 -R /home/$APPNAME
 cd $APPNAME
-sudo rm -rf .git
+sudo rm -r .git
 curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
 sudo npm install
-sudo git init
+git init
+git remote add origin https://github.com/mpduffey/$APPNAME
 gitpush 'v0.0.1'
