@@ -6,7 +6,6 @@ curl --silent --location https://rpm.nodesource.com/setup_5.x | bash -
 sudo yum install -y gcc-c++ make
 sudo yum install -y nodejs
 sudo npm install npm -g
-sudo yum install git
 sudo yum install autoconf autoconf autoconf-archive automake ncurses-devel curl-devel erlang-asn1 erlang-erts erlang-eunit erlang-os_mon erlang-xmerl help2man js-devel libicu-devel libtool perl-Test-Harness gcc-c++
 sudo wget http://www.erlang.org/download/otp_src_R14B01.tar.gz
 sudo tar -xvf otp_src_R14B01.tar.gz
