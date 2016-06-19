@@ -1,8 +1,8 @@
 #!/bin/bash
-# Launch ec-2 instance
+# Launch EC-2 instance
 
 cd /home/ec2-user
-sudo curl --silent --location https://rpm.nodesource.com/setup_5.x | bash -
+sudo curl --silent --location https://rpm.nodesource.com/setup_5.x | sudo bash -
 sudo yum install -y gcc-c++ make
 sudo yum install -y nodejs
 sudo npm install npm -g
