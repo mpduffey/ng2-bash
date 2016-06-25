@@ -2,6 +2,9 @@
 # Launch EC-2 instance
 
 cd /home/ec2-user
+git config --global user.name "Mike Duffey"
+git config --global user.email "mpduffey@gmail.com"
+git config --global credential.helper store
 sudo curl --silent --location https://rpm.nodesource.com/setup_5.x | sudo bash -
 sudo yum install -y gcc-c++ make
 sudo yum install -y nodejs
@@ -34,7 +37,5 @@ sudo chmod -R 777 /usr/local/var/log/couchdb
 sudo yum install mysql
 sudo npm install forever -g
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
-git config --global user.name "Mike Duffey"
-git config --global user.email "mpduffey@gmail.com"
-git config --global credential.helper store
-npm install yo generator-generator
+sudo npm install yo generator-generator
+sudo npm install -g ionic@beta
