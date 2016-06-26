@@ -39,3 +39,6 @@ sudo npm install forever -g
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
 sudo npm install yo generator-generator
 sudo npm install -g ionic@beta cordova
+
+# 32-bit packages for Android
+sudo yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
