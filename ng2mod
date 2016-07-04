@@ -1,12 +1,16 @@
 #!/bin/bash
 # Create Angular 2 module
 
-curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$1'"}'
-cd /home/dev/ng2-modules
-git clone https://github.com/mpduffey/$1
-cd $1
-npm init -y
-touch $1.ts
-git add .
-git commit -m 'v0.0.0'
-git push origin master
+if [ -z $APPNAME ]; then
+  echo "APPNAME is empty. Set APPNAME"
+else
+  curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$1'"}'
+  cd /home/$APPNAME/app/modules
+  git clone https://github.com/mpduffey/$1
+  cd $1
+  npm init -y
+  touch $1.ts
+  git add .
+  git commit -m 'v0.0.0'
+  git push origin master
+fi
