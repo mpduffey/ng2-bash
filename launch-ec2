@@ -5,7 +5,7 @@ cd /home/ec2-user
 git config --global user.name "Mike Duffey"
 git config --global user.email "mpduffey@gmail.com"
 git config --global credential.helper store
-sudo curl --silent --location https://rpm.nodesource.com/setup_5.x | sudo bash -
+sudo curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
 sudo yum install -y gcc-c++ make
 sudo yum install -y nodejs
 sudo npm install npm -g
@@ -27,6 +27,8 @@ sudo tar -xvf apache-couchdb-1.6.1.tar.gz
 cd apache-couchdb-1.6.1
 sudo ./configure --with-erlang=/usr/local/lib/erlang/usr/include
 sudo make && sudo make install
+
+# Set file and folder owners and permissions
 sudo chmod 777 /lost+found
 sudo chmod 777 /root
 sudo chmod 777 /usr/local/etc/couchdb
@@ -34,7 +36,11 @@ sudo chmod 777 /usr/local/etc/couchdb/local.ini
 sudo chmod 777 /usr/local/var/lib/couchdb
 sudo chmod 777 /usr/local/var/run/couchdb
 sudo chmod -R 777 /usr/local/var/log/couchdb
+sudo chown ec2-user -R /home
+sudo chmod 775 -R /home
+
 sudo yum install mysql
+sudo service mysql start
 sudo npm install forever -g
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
 sudo npm install yo generator-generator
@@ -42,3 +48,8 @@ sudo npm install -g ionic@beta cordova
 
 # 32-bit packages for Android
 sudo yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
+
+# confirm installations
+git -v
+node -v
+npm -v
