@@ -36,8 +36,10 @@ sudo chmod 777 /usr/local/etc/couchdb/local.ini
 sudo chmod 777 /usr/local/var/lib/couchdb
 sudo chmod 777 /usr/local/var/run/couchdb
 sudo chmod -R 777 /usr/local/var/log/couchdb
+sudo chown ec2-user -R /home/ec2-user/bin
+sudo chmod 775 -R home/ec2-user/bin
 
-sudo yum install mysql
+sudo yum install mysql mysql-server
 sudo service mysql start
 sudo npm install forever -g
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
@@ -48,6 +50,6 @@ sudo npm install -g ionic@beta cordova
 sudo yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
 
 # confirm installations
-git -v
+git --version
 node -v
 npm -v
