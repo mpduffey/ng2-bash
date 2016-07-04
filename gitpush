@@ -1,5 +1,5 @@
 #!/bin/bash
-# Launch ec-2 instance
+# Push git changes to repo
 
 git add .
 git commit -m "$1"

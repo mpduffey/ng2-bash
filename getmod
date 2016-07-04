@@ -1,0 +1,5 @@
+#!/bin/bash
+# Get ng2 module from github
+
+cd /home/$APPNAME/app/modules
+sudo git clone https://github.com/mpduffey/$1

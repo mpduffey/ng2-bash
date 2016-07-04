@@ -2,9 +2,9 @@
 # Launch ng2 app
 
 if [ -z $1 ]; then
-	APPNAME="NewApp"
+	export APPNAME="NewApp"
 else
-	APPNAME=$1
+	export APPNAME=$1
 fi
 
 cd /home
