@@ -19,3 +19,6 @@ mkdir app/modules
 git init
 git remote add origin https://github.com/mpduffey/$APPNAME
 gitpush 'v0.0.1'
+mkdir css
+cd css
+git clone https://github.com/mpduffey/ng2-css.git .
