@@ -36,8 +36,6 @@ sudo chmod 777 /usr/local/etc/couchdb/local.ini
 sudo chmod 777 /usr/local/var/lib/couchdb
 sudo chmod 777 /usr/local/var/run/couchdb
 sudo chmod -R 777 /usr/local/var/log/couchdb
-sudo chown ec2-user -R /home
-sudo chmod 775 -R /home
 
 sudo yum install mysql
 sudo service mysql start
