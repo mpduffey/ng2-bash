@@ -1,5 +1,9 @@
 #!/bin/bash
 # Get ng2 module from github
 
-cd /home/$APPNAME/app/modules
-sudo git clone https://github.com/mpduffey/$1
+if [ -z $APPNAME ]; then
+  echo "APPNAME is empty. Set APPNAME"
+else
+  cd /home/$APPNAME/app/modules
+  sudo git clone https://github.com/mpduffey/$1
+ fi
