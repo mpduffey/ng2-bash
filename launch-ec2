@@ -41,7 +41,7 @@ sudo chmod 775 -R home/ec2-user/bin
 
 sudo yum install mysql mysql-server
 sudo service mysqld start
-sudo npm install forever -g
+sudo npm install typings forever -g
 sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
 sudo npm install -g yo generator-generator
 sudo npm install -g ionic@beta cordova
