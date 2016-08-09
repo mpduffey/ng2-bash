@@ -4,7 +4,7 @@
 if [ -z $APPNAME ]; then
   echo "APPNAME is empty. Set APPNAME"
 else
-  # cd /home/$APPNAME/app/components
+  cd /home/$APPNAME/app/components
 	for D in *; do
 		if [ -d "${D}" ]; then
 			echo "Current git status for '$D'"
