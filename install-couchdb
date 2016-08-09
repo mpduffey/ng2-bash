@@ -1,0 +1,21 @@
+#!/bin/bash
+# Install couchdb
+
+sudo yum install autoconf autoconf autoconf-archive automake ncurses-devel curl-devel erlang-asn1 erlang-erts erlang-eunit erlang-os_mon erlang-xmerl help2man js-devel libicu-devel libtool perl-Test-Harness gcc-c++
+sudo wget http://www.erlang.org/download/otp_src_R14B01.tar.gz
+sudo tar -xvf otp_src_R14B01.tar.gz
+cd otp_src_R14B01
+sudo ./configure
+sudo make && sudo make install
+sudo yum install cvs zip gcc-c++ glib2-devel gtk2-devel fontconfig-devel libnotify-devel libIDL-devel alsa-lib-devel libXt-devel freetype-devel pkgconfig dbus-glib-devel curl-devel autoconf213 xorg-x11-proto-devel libX11-devel libXau-devel libXext-devel wireless-tools-devel glibc-static libstdc++-static yasm mesa-libGL-devel esound-libs esound-devel ccache mercurial
+sudo curl -L -O http://ftp.mozilla.org/pub/mozilla.org/js/js185-1.0.0.tar.gz
+sudo tar xvf js185-1.0.0.tar.gz
+cd js-1.8.5/js/src
+autoconf-2.13
+sudo ./configure
+sudo make && sudo make install
+sudo wget http://mirror.tcpdiag.net/apache/couchdb/source/1.6.1/apache-couchdb-1.6.1.tar.gz
+sudo tar -xvf apache-couchdb-1.6.1.tar.gz
+cd apache-couchdb-1.6.1
+sudo ./configure --with-erlang=/usr/local/lib/erlang/usr/include
+sudo make && sudo make install

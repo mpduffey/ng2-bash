@@ -1,0 +1,34 @@
+#!/bin/bash
+# Launch EC-2 instance
+# configure git
+# install nodejs and npm
+# install and start mysql
+# install ionic, yeoman, generator-generator, typings and forever
+
+cd /home/ec2-user
+git config --global user.name "Mike Duffey"
+git config --global user.email "mpduffey@gmail.com"
+git config --global credential.helper store
+sudo curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
+sudo yum install -y gcc-c++ make
+sudo yum install -y nodejs
+sudo npm install npm -g
+
+# Set file and folder owners and permissions
+sudo chown ec2-user -R /home/ec2-user/bin
+sudo chmod 775 -R home/ec2-user/bin
+
+sudo yum install mysql mysql-server
+sudo service mysqld start
+sudo npm install typings forever -g
+sudo iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to 3000
+sudo npm install -g yo generator-generator
+sudo npm install -g ionic@beta cordova
+
+# 32-bit packages for Android
+sudo yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
+
+# confirm installations
+git --version
+node -v
+npm -v
