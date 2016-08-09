@@ -1,0 +1,19 @@
+#!/bin/bash
+# Get ng2 module from github
+
+if [ -z $APPNAME ]; then
+  echo "APPNAME is empty. Set APPNAME"
+else
+  # cd /home/$APPNAME/app/components
+	for D in *; do
+		if [ -d "${D}" ]; then
+			echo "Current git status for '$D'"
+			cd $D
+			git status
+			cd ..
+			# echo "Please enter some input: "
+			# read input_variable
+			# echo "You entered: ${D} $input_variable"
+		fi
+	done
+fi
