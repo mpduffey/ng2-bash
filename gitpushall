@@ -11,9 +11,9 @@ else
 			cd $D
 			git status
 			cd ..
-			# echo "Please enter some input: "
-			# read input_variable
-			# echo "You entered: ${D} $input_variable"
+			echo "Please enter some input: "
+			read input_variable
+			echo "You entered: ${D} $input_variable"
 		fi
 	done
 fi
