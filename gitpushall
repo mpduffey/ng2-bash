@@ -4,16 +4,32 @@
 if [ -z $APPNAME ]; then
   echo "APPNAME is empty. Set APPNAME"
 else
-  cd /home/$APPNAME/app/components
-	for D in *; do
-		if [ -d "${D}" ]; then
-			echo "Current git status for '$D'"
-			cd $D
-			git status
-			cd ..
-			echo "Please enter some input: "
-			read input_variable
-			echo "You entered: ${D} $input_variable"
-		fi
+	for dir in components modules; do
+		cd /home/$APPNAME/app/$dir
+		for D in *; do
+			if [ -d "${D}" ]; then
+				printf "\n--------------------------------------------------\nCurrent git status for '$D'\n--------------------------------------------------\n"
+				cd $D
+				git status
+				while ! git diff-index --quiet HEAD --; do
+					read -p "Do you wish to push this repo to git?" yn
+					case $yn in
+ 					[Yy]* )
+						printf "Please enter commit message: "
+						read commit_msg
+						if [ -z $commit_msg ]; then
+							printf "Please enter commit message: "
+							read commit_msg
+						else
+							gitpush $commit_msg
+						fi
+						break;;
+					[Nn]* ) printf "not pushing to git ..."; break;;
+					* ) printf "Please answer yes or no.\n";;
+					esac
+				done
+				cd ..
+			fi
+		done
 	done
 fi
