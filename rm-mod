@@ -1,0 +1,14 @@
+#!/bin/bash
+# Remove Module
+
+if [ -z $1 ]; then
+	printf "Please enter module name to remove.\n\n"
+else
+	if [ -z $APPNAME ]; then
+	  echo "APPNAME is empty. Set APPNAME"
+	else
+		cd /home/$APPNAME/app/modules
+		sudo rm -r $1
+		printf "Module '$1' removed."
+	fi
+fi
