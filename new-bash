@@ -1,0 +1,10 @@
+#!/bin/bash
+# New Bash Module
+
+if [ -z $1 ]; then
+	printf "Please enter bash module name to create.\n\n"
+else
+	sudo touch /home/ec2-user/bin/$1
+	sudo chown ec2-user /home/ec2-user/bin/$1
+	sudo chmod 755 /home/ec2-user/bin/$1
+fi
