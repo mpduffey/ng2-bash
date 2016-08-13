@@ -1,0 +1,17 @@
+#!/bin/bash
+# Git clone module
+
+if [ -z $1 ]; then
+	printf "Please enter module name to clone.\n\n"
+else
+	if [ -z $APPNAME ]; then
+  	echo "APPNAME is empty. Set APPNAME"
+	else
+		cd /home/$APPNAME/app/modules
+		if [ -d "./$1" ]; then
+			printf "'$1' has already been cloned to this app.\n\n"
+		else
+			git clone https://github.com/mpduffey/$1.git
+		fi
+	fi
+fi

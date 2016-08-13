@@ -1,0 +1,8 @@
+#!/bin/bash
+# Change directories to the application's modules folder
+
+if [ -z $APPNAME ]; then
+  echo "APPNAME is empty. Set APPNAME"
+else
+	cd /home/$APPNAME/app/modules
+fi
