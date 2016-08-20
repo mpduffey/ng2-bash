@@ -1,0 +1,14 @@
+#!/bin/bash
+# Delete Git Repo Locally and Remotely
+
+# Add "Are you sure?" prompt
+if [ -z $APPNAME ]; then
+  echo "APPNAME is empty. Set APPNAME"
+else
+	if [ -z $1 ]; then
+		printf "Please name the repo to delete\n\n"
+	else
+		curl -X DELETE https://api.github.com/repos/mpduffey/$1
+		rm-mod $1
+	fi
+fi
