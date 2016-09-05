@@ -6,4 +6,6 @@ if [ -z $APPNAME ]; then
 else
   cd /home/$APPNAME/app/modules
   sudo git clone https://github.com/mpduffey/$1
+  sudo chown ec2-user -R $1
+  sudo chmod 755 -R $1
  fi
