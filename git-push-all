@@ -21,7 +21,7 @@ else
 							printf "Please enter commit message: "
 							read commit_msg
 						else
-							gitpush $commit_msg
+							git-push $commit_msg
 						fi
 						break;;
 					[Nn]* ) printf "not pushing to git ..."; break;;
