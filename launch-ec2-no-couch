@@ -12,13 +12,13 @@ git config --global credential.helper store
 sudo curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
 sudo yum install -y gcc-c++ make
 sudo yum install -y nodejs
-sudo npm install npm -g
+sudo npm install npm -g -y
 
 # Set file and folder owners and permissions
 sudo chown ec2-user -R /home/ec2-user/bin
 sudo chmod 775 -R home/ec2-user/bin
 
-sudo yum install mysql mysql-server
+sudo yum install mysql mysql-server -y
 sudo service mysqld start
 sudo npm install typings forever -g
 npm run typings install
