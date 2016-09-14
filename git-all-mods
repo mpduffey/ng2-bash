@@ -1,0 +1,12 @@
+#!/bin/bash
+# Clone all app modules into modules folders
+
+cd /var/www/html/app/modules
+for D in *; do
+	if [ -d "${D}" ]; then
+		printf "\n--------------------------------------------------\nDownloading '$D'\n--------------------------------------------------\n"
+		cd $D
+		git clone https://github.com/mpduffey/$D.git .
+		cd ..
+	fi
+done

@@ -1,0 +1,11 @@
+#!/bin/bash
+# Deploy current Angular 2 Dev App to Production
+
+if [ -z $APPNAME ]; then
+  echo "APPNAME is empty. Set APPNAME"
+else
+	cd /home/$APPNAME
+	npm run tsc
+	git-push-all
+	git-pull-all-mods
+fi

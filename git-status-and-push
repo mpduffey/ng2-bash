@@ -1,0 +1,21 @@
+#!/bin/bash
+# Git status and push
+
+git status
+while ! git diff-index --quiet HEAD --; do
+	read -p "Do you wish to push this repo to git?" yn
+	case $yn in
+	[Yy]* )
+		printf "Please enter commit message: "
+		read commit_msg
+		if [ -z $commit_msg ]; then
+			printf "Please enter commit message: "
+			read commit_msg
+		else
+			git-push $commit_msg
+		fi
+		break;;
+	[Nn]* ) printf "not pushing to git ..."; break;;
+	* ) printf "Please answer yes or no.\n";;
+	esac
+done
