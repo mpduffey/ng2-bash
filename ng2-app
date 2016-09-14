@@ -2,23 +2,25 @@
 # Launch ng2 app
 
 if [ -z $1 ]; then
-	export APPNAME="NewApp"
+	printf "No App Name provided. Please add an app name to the command like 'ng2-app [App Name]'. \n\n"
 else
 	export APPNAME=$1
+	cd /home
+	sudo git clone https://github.com/angular/quickstart $APPNAME
+	sudo chown ec2-user -R /home/$APPNAME
+	sudo chmod 2775 -R /home/$APPNAME
+	cd $APPNAME
+	sudo rm -r .git
+	curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
+	sudo npm install
+	sudo npm run typings install
+	mkdir app/modules
+	git init
+	git remote add origin https://github.com/mpduffey/$APPNAME
+	git-push 'v0.0.1'
+	mkdir css
+	cd css
+	git clone https://github.com/mpduffey/ng2-css.git .
+	cd /home
+	sails new $1-api
 fi
-
-cd /home
-sudo git clone https://github.com/angular/quickstart $APPNAME
-sudo chown ec2-user -R /home/$APPNAME
-sudo chmod 775 -R /home/$APPNAME
-cd $APPNAME
-sudo rm -r .git
-curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
-sudo npm install
-mkdir app/modules
-git init
-git remote add origin https://github.com/mpduffey/$APPNAME
-gitpush 'v0.0.1'
-mkdir css
-cd css
-git clone https://github.com/mpduffey/ng2-css.git .

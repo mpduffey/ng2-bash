@@ -1,0 +1,62 @@
+#!/bin/bash
+# Launch EC-2 instance
+# configure git
+# install nodejs and npm
+# install and start mysql
+# install ionic, yeoman, generator-generator, typings and forever
+
+cd /home/ec2-user
+git config --global user.name "Mike Duffey"
+git config --global user.email "mpduffey@gmail.com"
+git config --global credential.helper store
+sudo curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
+sudo yum install -y gcc-c++ make
+sudo yum install -y nodejs
+sudo npm install npm -g -y
+
+# Set file and folder owners and permissions
+sudo chown ec2-user -R /home/ec2-user/bin
+sudo chmod 2775 -R home/ec2-user/bin
+
+sudo yum install mysql mysql-server httpd24 -y
+sudo service mysqld start
+sudo service httpd start
+sudo npm install typings forever -g
+sudo npm install -g yo generator-generator sails sails-mysql
+sudo npm install -g ionic@beta cordova
+
+# 32-bit packages for Android
+sudo yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
+
+if [ -z $1 ]; then
+	printf "No App Name provided. Launch a new app with 'ng2-app [App Name]'. \n\n"
+else
+	export APPNAME=$1
+	cd /home
+	sudo git clone https://github.com/angular/quickstart $APPNAME
+	sudo chown ec2-user -R /home/$APPNAME
+	sudo chmod 2775 -R /home/$APPNAME
+	cd $APPNAME
+	sudo rm -r .git
+	curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
+	sudo npm install
+	sudo npm run typings install
+	mkdir app/modules
+	git init
+	git remote add origin https://github.com/mpduffey/$APPNAME
+	git-push 'v0.0.1'
+	mkdir css
+	cd css
+	git clone https://github.com/mpduffey/ng2-css.git .
+	cd /home
+	sudo sails new $1-api
+	sudo chown ec2-user -R /home/$APPNAME-api
+	sudo chmod 2775 -R /home/$APPNAME-api
+fi
+
+# confirm installations
+git --version
+node -v
+npm -v
+mysql --version
+httpd -version
