@@ -1,0 +1,5 @@
+#!/bin/bash
+# Update the bash scripts
+
+cd /home/ec2-user/bin
+git pull

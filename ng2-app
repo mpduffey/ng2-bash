@@ -22,5 +22,5 @@ else
 	cd css
 	git clone https://github.com/mpduffey/ng2-css.git .
 	cd /home
-	sails new $1-api
+	sudo sails new $1-api
 fi
