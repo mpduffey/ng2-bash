@@ -8,11 +8,11 @@ else
   cd /home/$APPNAME/app/modules
   git clone https://github.com/mpduffey/$1
   sudo chown ec2-user -R $1
-  sudo chown 775 -R $1
+  sudo chown 2775 -R $1
   cd $1
-  npm init -y
-  touch $1.ts
-  git add .
-  git commit -m 'v0.0.0'
-  git push origin master
+  sudo npm init -y
+  sudo touch $1.ts
+  sudo git add .
+  sudo git commit -m 'v0.0.0'
+  sudo git push origin master
 fi
