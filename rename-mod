@@ -1,0 +1,20 @@
+#!/bin/bash
+# Rename repo, folder, files
+
+if [ -z $APPNAME ]; then
+	printf "Please set the APPNAME.\n\n"
+else
+	if [ -z $1 ]; then
+		printf "Please set identify the module to rename.\n\n"
+	else
+		if [ -z $2 ]; then
+			printf "Please set a new name for the module.\n\n"
+		else
+			curl -u "mpduffey:braces11" -X PATCH -d '{"name": "'$2'"}' https://api.github.com/repos/mpduffey/$1
+			sudo mv /home/$APPNAME/app/modules/$1 /home/$APPNAME/app/modules/$2
+			sudo mv /home/$APPNAME/app/modules/$2/$1.ts /home/$APPNAME/app/modules/$2/$2.ts
+			sudo mv /home/$APPNAME/app/modules/$2/$1.js /home/$APPNAME/app/modules/$2/$2.js
+			sudo mv /home/$APPNAME/app/modules/$2/$1.js.map /home/$APPNAME/app/modules/$2/$2.js.map
+		fi
+	fi
+fi
