@@ -13,8 +13,10 @@ else
 	sudo rm -r .git
 	curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
 	sudo npm install
+	sudo npm install gulp --save-dev
 	sudo npm run typings install
 	mkdir app/modules
+	touch gulpfile.js
 	git init
 	git remote add origin https://github.com/mpduffey/$APPNAME
 	git-push 'v0.0.1'
