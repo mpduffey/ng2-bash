@@ -6,15 +6,15 @@ if [ -z $1 ]; then
 else
 	export APPNAME=$1
 	cd /home
-	sudo git clone https://github.com/angular/quickstart $APPNAME
-	sudo chown ec2-user -R /home/$APPNAME
-	sudo chmod 2775 -R /home/$APPNAME
+	git clone https://github.com/angular/quickstart $APPNAME
+	chown ec2-user -R /home/$APPNAME
+	chmod 2775 -R /home/$APPNAME
 	cd $APPNAME
 	sudo rm -r .git
 	curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
-	sudo npm install
-	sudo npm install gulp --save-dev
-	sudo npm run typings install
+	npm install
+	npm install gulp --save-dev
+	npm run typings install
 	mkdir app/modules
 	touch gulpfile.js
 	git init
@@ -24,5 +24,5 @@ else
 	cd css
 	git clone https://github.com/mpduffey/ng2-css.git .
 	cd /home
-	sudo sails new $1-api
+	sails new $1-api
 fi

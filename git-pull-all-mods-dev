@@ -1,0 +1,17 @@
+#!/bin/bash
+# Git Pull all Modules
+
+if [ -z $APPNAME ]; then
+  echo "APPNAME is empty. Set APPNAME"
+else
+	cd /home/$APPNAME/app/modules
+	for D in *; do
+		if [ -d "${D}" ]; then
+			printf "\n--------------------------------------------------\nUpdating '$D'\n--------------------------------------------------\n"
+			cd $D
+			git fetch --all
+			git reset --hard origin/master
+			cd ..
+		fi
+	done
+fi

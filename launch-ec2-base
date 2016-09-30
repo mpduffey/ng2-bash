@@ -16,7 +16,7 @@ curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
 sudo yum install -y gcc-c++ make nodejs
 npm install npm -g -y
 
-sudo yum install mysql mysql-server -y
+sudo yum install mysql mysql-server httpd24 -y
 sudo service mysqld start
 npm install -g typings forever gulp-cli yo generator-generator ionic@beta cordova
 npm run typings install
