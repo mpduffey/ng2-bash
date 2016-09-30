@@ -11,6 +11,9 @@ git config --global user.email "mpduffey@gmail.com"
 git config --global credential.helper store
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
+touch ~/.profile
+sed '1 a export PATH=~/.npm-global/bin:$PATH' ~/.profile
+sed '1 a export APPNAME=$1' ~/.profile
 export PATH=~/.npm-global/bin:$PATH
 curl --silent --location https://rpm.nodesource.com/setup_6.x | sudo bash -
 sudo yum install -y gcc-c++ make nodejs
