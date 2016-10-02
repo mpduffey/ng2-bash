@@ -30,3 +30,4 @@ sudo yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 n
 git --version
 node -v
 npm -v
+gulp --v
