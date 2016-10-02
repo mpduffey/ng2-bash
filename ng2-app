@@ -13,6 +13,7 @@ else
 	cd $1
 	sudo rm -r .git
 	curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$1'"}'
+	npm install
 	npm install gulp --save-dev
 	npm run typings install
 	mkdir app/modules
