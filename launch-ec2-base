@@ -21,7 +21,6 @@ export PATH=~/.npm-global/bin:$PATH
 sudo yum install mysql mysql-server httpd24 -y
 sudo service mysqld start
 npm install -g typings forever gulp-cli yo generator-generator ionic@beta cordova sails
-npm run typings install
 
 # 32-bit packages for Android
 sudo yum install -y glibc.i686 glibc-devel.i686 libstdc++.i686 zlib-devel.i686 ncurses-devel.i686 libX11-devel.i686 libXrender.i686 libXrandr.i686
