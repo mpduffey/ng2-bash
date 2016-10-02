@@ -4,21 +4,19 @@
 if [ -z $1 ]; then
 	printf "No App Name provided. Please add an app name to the command like 'ng2-app [App Name]'. \n\n"
 else
-	export APPNAME=$1
 	cd /home
-	git clone https://github.com/angular/quickstart $APPNAME
-	chown ec2-user -R /home/$APPNAME
-	chmod 2775 -R /home/$APPNAME
-	cd $APPNAME
+	git clone https://github.com/angular/quickstart $1
+	chown ec2-user -R /home/$1
+	chmod 2775 -R /home/$1
+	cd $1
 	sudo rm -r .git
-	curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$APPNAME'"}'
-	npm install
+	curl -u 'mpduffey' https://api.github.com/user/repos -d '{"name": "'$1'"}'
 	npm install gulp --save-dev
 	npm run typings install
 	mkdir app/modules
 	touch gulpfile.js
 	git init
-	git remote add origin https://github.com/mpduffey/$APPNAME
+	git remote add origin https://github.com/mpduffey/$1
 	git-push 'v0.0.1'
 	mkdir css
 	cd css
